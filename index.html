@@ -14,7 +14,7 @@
 			}
 			.info {
 				font-family: Arial, Helvetica, sans-serif;
-				font-size: 30px;
+				font-size: 25px;
 				position: absolute;
 				top: 10px;
 				width: 100%;
@@ -170,8 +170,14 @@
 					var bevelhash = hash.substring( 8, 9 );
 					var texthash = hash.substring( 10 );
 
-					hex = colorhash;
-					pointLight.color.setHex( parseInt( colorhash, 16 ) );
+					if(colorhash === "000000") {
+						pointLight.color.setHSL( Math.random(), 1, 0.5 );
+						hex = decimalToHex( pointLight.color.getHex() );
+					}
+					else {
+						hex = colorhash;
+						pointLight.color.setHex( parseInt( colorhash, 16 ) );
+					}
 
 					fontName = reverseFontMap[ parseInt( fonthash ) ];
 					fontWeight = reverseWeightMap[ parseInt( weighthash ) ];
